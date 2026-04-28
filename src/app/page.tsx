@@ -1,6 +1,6 @@
-import { Navbar } from './ui';
-import { Reveal, ParallaxImage, StatNumber, HoverCard } from './components';
-import { ChatWidget } from './ui';
+import { Navbar, AnnouncementBar, ChatWidget } from './ui';
+import { Reveal, StatNumber, HoverCard } from './components';
+import { HeroDashboard } from './dashboard';
 
 const S = {
   section: { padding: 'clamp(5rem, 10vw, 9rem) 0' } as React.CSSProperties,
@@ -11,54 +11,58 @@ const S = {
 export default function Page() {
   return (
     <>
+      <AnnouncementBar />
       <Navbar />
 
       {/* ── HERO ── */}
       <main id="main">
-      <section style={{ ...S.section, paddingTop: 'clamp(9rem, 18vw, 14rem)', position: 'relative', overflow: 'hidden' }}>
-        <div aria-hidden="true" style={{ position: 'absolute', top: '10%', left: '50%', transform: 'translateX(-50%)', width: 600, height: 600, background: 'oklch(62% 0.22 27 / 0.06)', borderRadius: '50%', filter: 'blur(100px)', pointerEvents: 'none' }} />
+      <section style={{ ...S.section, paddingTop: 'clamp(10rem, 20vw, 15rem)', position: 'relative', overflow: 'hidden' }}>
+        {/* Ambient glow */}
+        <div aria-hidden="true" style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)', width: 700, height: 500, background: 'oklch(62% 0.22 27 / 0.07)', borderRadius: '50%', filter: 'blur(120px)', pointerEvents: 'none' }} />
 
         <div className="container" style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
+          {/* Tag pill */}
           <Reveal>
-            <div className="tag" style={{ display: 'inline-flex', marginBottom: '2rem' }}>
-              <span className="dot" />
-              Solo 5 contratistas por zona — 2 zonas disponibles
+            <div className="tag" style={{ display: 'inline-flex', marginBottom: '1.75rem' }}>
+              Agente MoonBlack
             </div>
           </Reveal>
 
+          {/* H1 */}
           <Reveal delay={0.1}>
-            <h1 style={{ fontSize: 'clamp(2.75rem, 6vw, 5.5rem)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1.06, maxWidth: '16ch', margin: '0 auto 1.75rem', color: 'oklch(96% 0.005 260)' }}>
-              Cierra más contratos.{' '}
-              <span style={{ color: 'oklch(62% 0.22 27)' }}>Sin perseguir a nadie.</span>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1.08, maxWidth: '20ch', margin: '0 auto 1.5rem', color: 'oklch(96% 0.005 260)' }}>
+              Tu asistente de ventas para{' '}
+              <span style={{ color: 'oklch(62% 0.22 27)' }}>roofers</span>{' '}
+              que quieren más contratos.
             </h1>
           </Reveal>
 
+          {/* Subhead */}
           <Reveal delay={0.2}>
-            <p style={{ ...S.p, maxWidth: '52ch', margin: '0 auto 2.5rem', fontSize: '1.05rem' }}>
-              Tu teléfono suena solo cuando hay dinero de por medio.
-              Cada cita en tu calendario es un homeowner que ya decidió que quiere un techo nuevo —
-              y que puede pagarlo.
+            <p style={{ ...S.p, maxWidth: '56ch', margin: '0 auto 2.25rem', fontSize: '1rem' }}>
+              El Agente MoonBlack atiende, califica y agenda citas con homeowners que ya
+              decidieron que quieren un techo nuevo — para que tú solo cierres.
             </p>
           </Reveal>
 
+          {/* CTAs */}
           <Reveal delay={0.3}>
-            <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: 'clamp(2.5rem, 5vw, 4rem)' }}>
               <a href="#demo" className="btn btn-primary">
                 Quiero más contratos
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </a>
               <a href="#resultados" className="btn btn-ghost">Ver resultados reales</a>
             </div>
           </Reveal>
 
-          <Reveal delay={0.45}>
-            <div style={{ marginTop: 'clamp(3rem, 6vw, 5rem)', position: 'relative' }}>
-              <div style={{ position: 'absolute', inset: -1, borderRadius: '1.4rem', background: 'oklch(62% 0.22 27 / 0.12)', filter: 'blur(32px)', zIndex: 0 }} />
-              <div style={{ position: 'relative', zIndex: 1, border: '1px solid oklch(22% 0.01 260)', borderRadius: '1.25rem', overflow: 'hidden', boxShadow: '0 32px 80px oklch(0% 0 0 / 0.4)' }}>
-                <ParallaxImage />
-              </div>
+          {/* Dashboard hero */}
+          <div style={{ position: 'relative' }}>
+            <div aria-hidden="true" style={{ position: 'absolute', inset: '-2px', borderRadius: '1.2rem', background: 'oklch(62% 0.22 27 / 0.1)', filter: 'blur(40px)', zIndex: 0 }} />
+            <div style={{ position: 'relative', zIndex: 1 }}>
+              <HeroDashboard />
             </div>
-          </Reveal>
+          </div>
         </div>
       </section>
 

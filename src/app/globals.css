@@ -12,6 +12,7 @@
   --accent-dim: oklch(55% 0.18 27);
   --accent-glow: oklch(62% 0.22 27 / 0.15);
   --green: oklch(72% 0.18 142);
+  --bar-h: 2rem;   /* announcement bar height */
 
   --font: var(--font-manrope), system-ui, sans-serif;
 
