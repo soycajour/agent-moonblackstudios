@@ -86,7 +86,7 @@ export function Navbar() {
           </div>
 
           <motion.a
-            href="#demo"
+            href="/planes"
             className="nav-cta"
             style={{
               display: 'inline-flex', alignItems: 'center',

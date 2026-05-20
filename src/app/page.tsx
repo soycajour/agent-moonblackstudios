@@ -1,4 +1,4 @@
-import { Navbar, AnnouncementBar, ChatWidget } from './ui';
+import { Navbar, AnnouncementBar } from './ui';
 import { Reveal, StatNumber, HoverCard } from './components';
 import { HeroDashboard } from './dashboard';
 
@@ -52,7 +52,6 @@ export default function Page() {
                 Quiero más contratos
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </a>
-              <a href="#resultados" className="btn btn-ghost">Ver resultados reales</a>
             </div>
           </Reveal>
 
@@ -159,11 +158,11 @@ export default function Page() {
               <div className="card" style={{ borderColor: 'oklch(62% 0.22 27 / 0.3)', background: 'oklch(12% 0.009 260)' }}>
                 <p className="section-label" style={{ marginBottom: '1.25rem', color: 'oklch(62% 0.22 27)' }}>Tu inversión</p>
                 <div style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1, marginBottom: '0.4rem' }}>
-                  $3,000
+                  $497
                   <span style={{ fontSize: '1rem', fontWeight: 400, color: 'oklch(45% 0.008 260)', marginLeft: '0.4rem' }}>USD / mes</span>
                 </div>
                 <p style={{ ...S.p, fontSize: '0.875rem', marginBottom: '2rem' }}>
-                  Un solo contrato de $24k paga 8 meses. El resto es ganancia pura que hoy se va con tu competencia.
+                  Un solo contrato de $24k paga 4 años. El resto es ganancia pura que hoy se va con tu competencia.
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2rem' }}>
                   {[
@@ -178,7 +177,7 @@ export default function Page() {
                     </div>
                   ))}
                 </div>
-                <a href="#demo" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
+                <a href="/planes" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
                   Quiero contratos, no leads
                 </a>
               </div>
@@ -218,7 +217,81 @@ export default function Page() {
               </Reveal>
             </div>
             <Reveal delay={0.15}>
-              <ChatWidget />
+              <div className="card" style={{ 
+                background: 'oklch(11% 0.008 260)', 
+                borderColor: 'var(--border-subtle)', 
+                padding: '2.5rem 2rem', 
+                borderRadius: '1.5rem', 
+                display: 'flex', 
+                flexDirection: 'column', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                textAlign: 'center',
+                minHeight: '380px',
+                position: 'relative',
+                overflow: 'hidden'
+              }}>
+                <div style={{ 
+                  position: 'absolute', 
+                  bottom: '-50px', 
+                  right: '-50px', 
+                  width: '200px', 
+                  height: '200px', 
+                  background: 'oklch(62% 0.22 27 / 0.12)', 
+                  borderRadius: '50%', 
+                  filter: 'blur(40px)', 
+                  pointerEvents: 'none' 
+                }} />
+                
+                <div style={{ 
+                  width: '64px', 
+                  height: '64px', 
+                  borderRadius: '50%', 
+                  background: 'oklch(17% 0.01 260)', 
+                  border: '1px solid oklch(62% 0.22 27 / 0.3)',
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center',
+                  marginBottom: '1.5rem',
+                  position: 'relative'
+                }}>
+                  <div style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: '50%',
+                    border: '2px solid oklch(62% 0.22 27 / 0.4)',
+                    animation: 'pulse 2s infinite'
+                  }} />
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="oklch(62% 0.22 27)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  </svg>
+                </div>
+
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'oklch(96% 0.005 260)', marginBottom: '0.75rem' }}>
+                  Prueba el Agente en Vivo
+                </h3>
+                <p style={{ ...S.p, fontSize: '0.9rem', color: 'oklch(70% 0.008 260)', lineHeight: 1.5, maxWidth: '28ch', marginBottom: '2rem' }}>
+                  Toca la burbuja de chat en la esquina inferior derecha de la pantalla para hablar directamente con él.
+                </p>
+
+                <div style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '0.5rem', 
+                  fontSize: '0.8rem', 
+                  fontWeight: 700, 
+                  color: 'oklch(62% 0.22 27)', 
+                  textTransform: 'uppercase', 
+                  letterSpacing: '0.05em' 
+                }}>
+                  Pruébalo aquí abajo
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ transform: 'rotate(45deg)' }}>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </div>
             </Reveal>
           </div>
         </div>
@@ -259,9 +332,7 @@ export default function Page() {
                 ))}
               </div>
             </div>
-            <a href="#demo" className="btn btn-primary" style={{ fontSize: '0.95rem', padding: '0.875rem 2.5rem' }}>
-              Verificar disponibilidad en mi zona
-            </a>
+
           </Reveal>
         </div>
       </section>
