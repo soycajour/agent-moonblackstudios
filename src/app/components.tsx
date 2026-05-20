@@ -1,7 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import Image from 'next/image';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 
 /* ── Shared animation variants ── */
@@ -32,27 +31,6 @@ export function Reveal({ children, delay = 0, className = '' }: { children: Reac
   );
 }
 
-/* ── Parallax hero image ── */
-export function ParallaxImage() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
-
-  return (
-    <div ref={ref} style={{ overflow: 'hidden', borderRadius: '1.25rem', position: 'relative', width: '100%' }}>
-      <motion.div style={{ y }}>
-        <Image
-          src="/dashboard.png"
-          alt="MoonBlack AI Agent Dashboard"
-          width={1100}
-          height={640}
-          priority
-          style={{ width: '100%', height: 'auto', display: 'block' }}
-        />
-      </motion.div>
-    </div>
-  );
-}
 
 /* ── Animated counter ── */
 export function StatNumber({ value, label, className = '' }: { value: string; label: string; className?: string }) {
