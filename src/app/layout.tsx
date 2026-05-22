@@ -30,7 +30,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Script 
           src="https://widgets.leadconnectorhq.com/loader.js" 
           data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" 
-          data-widget-id="69f187cf191334021634ba64"
+          data-widget-id="6a105635fbf00cbb1c311615"
           strategy="lazyOnload"
         />
       </body>
