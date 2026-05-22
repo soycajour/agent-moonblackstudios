@@ -1,11 +1,11 @@
 import { Navbar, AnnouncementBar } from './ui';
-import { Reveal, StatNumber, HoverCard } from './components';
+import { Reveal, StatNumber, HoverCard, DemoCard, PricingCard } from './components';
 import { HeroDashboard } from './dashboard';
 
 const S = {
   section: { padding: 'clamp(5rem, 10vw, 9rem) 0' } as React.CSSProperties,
   h2: { fontSize: 'clamp(2rem, 4vw, 3.25rem)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, color: 'oklch(96% 0.005 260)' } as React.CSSProperties,
-  p: { fontSize: '1rem', lineHeight: 1.72, color: 'oklch(58% 0.008 260)' } as React.CSSProperties,
+  p: { fontSize: '1rem', lineHeight: 1.72, color: 'oklch(75% 0.007 260)' } as React.CSSProperties,
 };
 
 export default function Page() {
@@ -18,7 +18,7 @@ export default function Page() {
       <main id="main">
       <section style={{ ...S.section, paddingTop: 'clamp(10rem, 20vw, 15rem)', position: 'relative', overflow: 'hidden' }}>
         {/* Ambient glow */}
-        <div aria-hidden="true" style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)', width: 700, height: 500, background: 'oklch(62% 0.22 27 / 0.07)', borderRadius: '50%', filter: 'blur(120px)', pointerEvents: 'none' }} />
+        <div aria-hidden="true" style={{ position: 'absolute', top: '10%', left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '900px', height: '600px', background: 'radial-gradient(circle, oklch(62% 0.22 27 / 0.18) 0%, transparent 60%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
 
         <div className="container" style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
           {/* Tag pill */}
@@ -91,12 +91,13 @@ export default function Page() {
             </p>
           </Reveal>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
+          <div className="bento-grid">
             {[
               {
                 num: '1',
                 title: 'Tu tiempo vale más que antes.',
                 desc: 'Terminas el día habiendo hablado solo con personas que tienen el dinero, la casa y la decisión lista. No más horas perdidas explicándole a alguien que "solo estaba preguntando".',
+                featured: true,
               },
               {
                 num: '2',
@@ -109,7 +110,7 @@ export default function Page() {
                 desc: 'El flujo de clientes no depende de si estás disponible, si tu vendedor llegó o si es fin de semana. Funciona solo. Eso es una empresa, no un auto-empleo.',
               },
             ].map((c) => (
-              <Reveal key={c.num}>
+              <Reveal key={c.num} className={c.featured ? "bento-featured" : ""}>
                 <HoverCard {...c} />
               </Reveal>
             ))}
@@ -155,32 +156,7 @@ export default function Page() {
             </div>
 
             <Reveal delay={0.15}>
-              <div className="card" style={{ borderColor: 'oklch(62% 0.22 27 / 0.3)', background: 'oklch(12% 0.009 260)' }}>
-                <p className="section-label" style={{ marginBottom: '1.25rem', color: 'oklch(62% 0.22 27)' }}>Tu inversión</p>
-                <div style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1, marginBottom: '0.4rem' }}>
-                  $497
-                  <span style={{ fontSize: '1rem', fontWeight: 400, color: 'oklch(45% 0.008 260)', marginLeft: '0.4rem' }}>USD / mes</span>
-                </div>
-                <p style={{ ...S.p, fontSize: '0.875rem', marginBottom: '2rem' }}>
-                  Un solo contrato de $24k paga 4 años. El resto es ganancia pura que hoy se va con tu competencia.
-                </p>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2rem' }}>
-                  {[
-                    'Operando en 7 días — sin fricción de tu parte',
-                    'Tu zona bloqueada para la competencia',
-                    'Clientes precalificados directo a tu calendario',
-                    'Respaldo completo mientras escalas',
-                  ].map((f) => (
-                    <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.875rem' }}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="oklch(72% 0.18 142)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                      <span style={{ color: 'oklch(78% 0.006 260)' }}>{f}</span>
-                    </div>
-                  ))}
-                </div>
-                <a href="/planes" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                  Quiero contratos, no leads
-                </a>
-              </div>
+              <PricingCard />
             </Reveal>
           </div>
         </div>
@@ -207,7 +183,7 @@ export default function Page() {
                     'Tu equipo solo cierra, no filtra',
                   ].map((f, i) => (
                     <Reveal key={f} delay={i * 0.07}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '0.875rem', color: 'oklch(65% 0.008 260)' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '0.875rem', color: 'oklch(75% 0.007 260)' }}>
                         <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'oklch(62% 0.22 27)', flexShrink: 0 }} />
                         {f}
                       </div>
@@ -217,81 +193,7 @@ export default function Page() {
               </Reveal>
             </div>
             <Reveal delay={0.15}>
-              <div className="card" style={{ 
-                background: 'oklch(11% 0.008 260)', 
-                borderColor: 'var(--border-subtle)', 
-                padding: '2.5rem 2rem', 
-                borderRadius: '1.5rem', 
-                display: 'flex', 
-                flexDirection: 'column', 
-                alignItems: 'center', 
-                justifyContent: 'center',
-                textAlign: 'center',
-                minHeight: '380px',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
-                <div style={{ 
-                  position: 'absolute', 
-                  bottom: '-50px', 
-                  right: '-50px', 
-                  width: '200px', 
-                  height: '200px', 
-                  background: 'oklch(62% 0.22 27 / 0.12)', 
-                  borderRadius: '50%', 
-                  filter: 'blur(40px)', 
-                  pointerEvents: 'none' 
-                }} />
-                
-                <div style={{ 
-                  width: '64px', 
-                  height: '64px', 
-                  borderRadius: '50%', 
-                  background: 'oklch(17% 0.01 260)', 
-                  border: '1px solid oklch(62% 0.22 27 / 0.3)',
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center',
-                  marginBottom: '1.5rem',
-                  position: 'relative'
-                }}>
-                  <div style={{
-                    position: 'absolute',
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: '50%',
-                    border: '2px solid oklch(62% 0.22 27 / 0.4)',
-                    animation: 'pulse 2s infinite'
-                  }} />
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="oklch(62% 0.22 27)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  </svg>
-                </div>
-
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'oklch(96% 0.005 260)', marginBottom: '0.75rem' }}>
-                  Prueba el Agente en Vivo
-                </h3>
-                <p style={{ ...S.p, fontSize: '0.9rem', color: 'oklch(70% 0.008 260)', lineHeight: 1.5, maxWidth: '28ch', marginBottom: '2rem' }}>
-                  Toca la burbuja de chat en la esquina inferior derecha de la pantalla para hablar directamente con él.
-                </p>
-
-                <div style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  gap: '0.5rem', 
-                  fontSize: '0.8rem', 
-                  fontWeight: 700, 
-                  color: 'oklch(62% 0.22 27)', 
-                  textTransform: 'uppercase', 
-                  letterSpacing: '0.05em' 
-                }}>
-                  Pruébalo aquí abajo
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ transform: 'rotate(45deg)' }}>
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                  </svg>
-                </div>
-              </div>
+              <DemoCard />
             </Reveal>
           </div>
         </div>
@@ -318,7 +220,7 @@ export default function Page() {
                   'Tienes crew listo para más trabajo',
                   'Quieres dejar de depender de referidos',
                 ].map((r) => (
-                  <div key={r} style={{ fontSize: '0.85rem', color: 'oklch(62% 0.008 260)', marginBottom: '0.5rem' }}>• {r}</div>
+                  <div key={r} style={{ fontSize: '0.85rem', color: 'oklch(75% 0.007 260)', marginBottom: '0.5rem' }}>• {r}</div>
                 ))}
               </div>
               <div className="card">
@@ -328,7 +230,7 @@ export default function Page() {
                   'Citas con compradores, no curiosos',
                   'Un flujo que funciona sin ti presente',
                 ].map((r) => (
-                  <div key={r} style={{ fontSize: '0.85rem', color: 'oklch(62% 0.008 260)', marginBottom: '0.5rem' }}>• {r}</div>
+                  <div key={r} style={{ fontSize: '0.85rem', color: 'oklch(75% 0.007 260)', marginBottom: '0.5rem' }}>• {r}</div>
                 ))}
               </div>
             </div>

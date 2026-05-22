@@ -6,8 +6,8 @@
   --border: oklch(22% 0.01 260);
   --border-subtle: oklch(18% 0.008 260);
   --text-primary: oklch(96% 0.005 260);
-  --text-secondary: oklch(62% 0.01 260);
-  --text-muted: oklch(45% 0.008 260);
+  --text-secondary: oklch(75% 0.007 260);
+  --text-muted: oklch(55% 0.008 260);
   --accent: oklch(62% 0.22 27);        /* deep amber-red */
   --accent-dim: oklch(55% 0.18 27);
   --accent-glow: oklch(62% 0.22 27 / 0.15);
@@ -186,3 +186,55 @@ p { text-wrap: pretty; }
 @media (max-width: 768px) {
   .two-col { grid-template-columns: 1fr !important; }
 }
+
+/* ── PREMIUM GLASSMORPHISM ── */
+.glass-panel {
+  background: oklch(14% 0.01 260 / 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid oklch(22% 0.01 260 / 0.5);
+  box-shadow: inset 0 1px 0 oklch(100% 0 0 / 0.05),
+              0 8px 32px oklch(0% 0 0 / 0.4);
+}
+
+/* ── BENTO GRID ── */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+.bento-featured {
+  grid-column: span 2;
+}
+@media (max-width: 900px) {
+  .bento-grid { grid-template-columns: 1fr; }
+  .bento-featured { grid-column: span 1; }
+}
+
+/* ── SPOTLIGHT CARD ── */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  transition: border-color 0.3s ease;
+}
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), var(--accent-glow), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+.spotlight-card > * {
+  position: relative;
+  z-index: 1;
+}
+
