@@ -10,8 +10,32 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://moonblackstudios.com'),
   title: "MoonBlack Studios — Infraestructura de Ventas para Roofing",
   description: "Sistema de calificación y captura de contratos de roofing en piloto automático. Solo 5 contratistas por zona. Acceso exclusivo.",
+  openGraph: {
+    title: "MoonBlack Studios — Infraestructura de Ventas para Roofing",
+    description: "Sistema de calificación y captura de contratos de roofing en piloto automático. Solo 5 contratistas por zona. Acceso exclusivo.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "MoonBlack Studios",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MoonBlack Studios — Infraestructura de Ventas para Roofing",
+    description: "Sistema de calificación y captura de contratos de roofing en piloto automático. Solo 5 contratistas por zona. Acceso exclusivo.",
+    images: ["/og-image.png"],
+  },
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export const viewport = {
