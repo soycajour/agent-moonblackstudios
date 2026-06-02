@@ -10,7 +10,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://moonblackstudios.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://agente.moonblackstudios.com'),
   title: "MoonBlack Studios — Infraestructura de Ventas para Roofing",
   description: "Sistema de calificación y captura de contratos de roofing en piloto automático. Solo 5 contratistas por zona. Acceso exclusivo.",
   openGraph: {

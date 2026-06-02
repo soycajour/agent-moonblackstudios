@@ -129,43 +129,35 @@ export function HeroDashboard() {
       initial={{ opacity: 0, y: 40, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.85, delay: 0.5, ease: [0.25, 0, 0, 1] }}
-      style={{
-        background: 'oklch(9.5% 0.007 260)',
-        border: '1px solid oklch(20% 0.01 260)',
-        borderRadius: '1rem',
-        overflow: 'hidden',
-        boxShadow: '0 40px 100px oklch(0% 0 0 / 0.55), 0 0 0 1px oklch(100% 0 0 / 0.04)',
-        display: 'flex',
-        minHeight: 480,
-        maxHeight: 560,
-        userSelect: 'none',
-      }}
+      className="db-wrapper"
     >
       {/* ── SIDEBAR ── */}
-      <aside style={{ width: 195, flexShrink: 0, background: 'oklch(8.5% 0.006 260)', borderRight: '1px solid oklch(18% 0.009 260)', display: 'flex', flexDirection: 'column' }}>
+      <aside className="db-sidebar">
         {/* Brand */}
-        <div style={{ padding: '1rem 1rem 0.75rem', borderBottom: '1px solid oklch(16% 0.008 260)', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-          <div style={{ width: 30, height: 30, borderRadius: '0.5rem', background: accent, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '0.75rem', color: '#fff', flexShrink: 0 }}>MB</div>
-          <div>
-            <div style={{ fontSize: '0.72rem', fontWeight: 700, color: textPrimary, lineHeight: 1.2 }}>Agente MoonBlack</div>
-            <div style={{ fontSize: '0.6rem', color: textMuted, letterSpacing: '0.04em' }}>Dashboard</div>
+        <div className="db-brand">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+            <div style={{ width: 30, height: 30, borderRadius: '0.5rem', background: accent, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '0.75rem', color: '#fff', flexShrink: 0 }}>MB</div>
+            <div>
+              <div style={{ fontSize: '0.72rem', fontWeight: 700, color: textPrimary, lineHeight: 1.2 }}>Agente MoonBlack</div>
+              <div style={{ fontSize: '0.6rem', color: textMuted, letterSpacing: '0.04em' }}>Dashboard</div>
+            </div>
+          </div>
+          {/* User profile icon only on mobile header */}
+          <div className="db-user-mobile">
+            <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'oklch(30% 0.01 260)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.65rem', fontWeight: 700, color: textSecondary, flexShrink: 0 }}>AT</div>
           </div>
         </div>
 
         {/* Nav */}
-        <nav style={{ flex: 1, padding: '0.6rem 0.5rem', display: 'flex', flexDirection: 'column', gap: '0.1rem' }}>
+        <nav className="db-nav">
           {navItems.map((item, i) => (
             <div
               key={item}
+              className="db-nav-item"
               style={{
-                display: 'flex', alignItems: 'center', gap: '0.6rem',
-                padding: '0.5rem 0.6rem',
-                borderRadius: '0.45rem',
                 background: i === 0 ? `${accent}18` : 'transparent',
                 color: i === 0 ? accent : textMuted,
-                fontSize: '0.75rem',
                 fontWeight: i === 0 ? 700 : 500,
-                cursor: 'default',
               }}
             >
               <NavIcon path={icons[item] || icons['Configuración']} />
@@ -174,8 +166,8 @@ export function HeroDashboard() {
           ))}
         </nav>
 
-        {/* User */}
-        <div style={{ padding: '0.75rem 1rem', borderTop: '1px solid oklch(16% 0.008 260)', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+        {/* User - Desktop Only */}
+        <div className="db-user-desktop">
           <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'oklch(30% 0.01 260)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.65rem', fontWeight: 700, color: textSecondary, flexShrink: 0 }}>AT</div>
           <div>
             <div style={{ fontSize: '0.7rem', fontWeight: 700, color: textPrimary, lineHeight: 1.2 }}>Alex Thompson</div>
@@ -185,9 +177,9 @@ export function HeroDashboard() {
       </aside>
 
       {/* ── MAIN CONTENT ── */}
-      <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
+      <div className="db-main">
         {/* Header */}
-        <div style={{ padding: '0.875rem 1.25rem', borderBottom: '1px solid oklch(18% 0.009 260)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0 }}>
+        <div className="db-header">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.72rem', color: textMuted }}>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             26 de Octubre, 2023
@@ -198,7 +190,7 @@ export function HeroDashboard() {
         </div>
 
         {/* KPI Cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.6rem', padding: '0.875rem 1.25rem', flexShrink: 0 }}>
+        <div className="db-kpis">
           <KpiCard label="Leads Calificados"   value="247"      delta="+18% vs trimestre anterior" iconPath="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0" iconColor={accent} />
           <KpiCard label="Citas Agendadas"     value="38"       delta="+27% vs trimestre anterior" iconPath="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" iconColor="oklch(65% 0.14 200)" />
           <KpiCard label="Contratos Cerrados"  value="18"       delta="+20% vs trimestre anterior" iconPath="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" iconColor="oklch(72% 0.18 142)" />
@@ -206,7 +198,7 @@ export function HeroDashboard() {
         </div>
 
         {/* Activity + Funnel */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: '0.6rem', padding: '0 1.25rem', flex: 1, minHeight: 0 }}>
+        <div className="db-row">
           {/* Activity */}
           <div style={{ background: surface, border, borderRadius: '0.75rem', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
             <div style={{ padding: '0.75rem 1rem', borderBottom: '1px solid oklch(18% 0.009 260)', fontSize: '0.76rem', fontWeight: 700, color: textPrimary }}>Actividad Reciente</div>
@@ -245,10 +237,10 @@ export function HeroDashboard() {
         </div>
 
         {/* Performance Row */}
-        <div style={{ padding: '0.6rem 1.25rem 0.875rem', flexShrink: 0 }}>
+        <div className="db-perf-row">
           <div style={{ background: surface, border, borderRadius: '0.75rem', overflow: 'hidden' }}>
             <div style={{ padding: '0.6rem 1rem', borderBottom: '1px solid oklch(18% 0.009 260)', fontSize: '0.76rem', fontWeight: 700, color: textPrimary }}>Rendimiento del Agente</div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
+            <div className="db-perf-grid">
               {perfMetrics.map((m, i) => (
                 <div key={i} style={{ padding: '0.75rem 1rem', borderRight: i < 3 ? '1px solid oklch(16% 0.008 260)' : 'none', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
                   <div style={{ width: 28, height: 28, borderRadius: '0.4rem', background: `${m.iconColor}20`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>

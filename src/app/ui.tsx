@@ -5,7 +5,7 @@ import { useRef } from 'react';
 /* ── SVG Logo (crescent moon + wordmark) ── */
 function Logo() {
   return (
-    <svg width="140" height="32" viewBox="0 0 140 32" fill="none" aria-label="MoonBlack Studios">
+    <svg className="nav-logo" viewBox="0 0 140 32" fill="none" aria-label="MoonBlack Studios">
       {/* Crescent moon */}
       <path
         d="M14 4C9.03 4 5 8.03 5 13C5 17.97 9.03 22 14 22C15.8 22 17.47 21.45 18.87 20.52C16.1 19.38 14.2 16.64 14.2 13.47C14.2 10.3 16.1 7.56 18.87 6.42C17.47 5.49 15.8 4 14 4Z"
@@ -50,18 +50,15 @@ export function Navbar() {
 
   return (
     <motion.header
-      style={{ position: 'fixed', top: '2rem', left: 0, right: 0, zIndex: 100 }}
+      className="nav-header"
       initial={{ opacity: 0, y: -12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: [0.25, 0, 0, 1] }}
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <motion.nav
+          className="nav-container"
           style={{
-            display: 'flex', alignItems: 'center', gap: '2.5rem',
-            width: '100%',
-            padding: '0.65rem 1.25rem',
-            borderRadius: '9999px',
             background: bg,
             border: '1px solid',
             borderColor: border,
@@ -71,7 +68,7 @@ export function Navbar() {
         >
           <Logo />
 
-          <div className="nav-links" style={{ display: 'flex', gap: '2rem', alignItems: 'center', flex: 1, justifyContent: 'center' }}>
+          <div className="nav-links">
             {['Sistema', 'Resultados', 'Demo'].map((item) => (
               <motion.a
                 key={item}
@@ -88,17 +85,6 @@ export function Navbar() {
           <motion.a
             href="/planes"
             className="nav-cta"
-            style={{
-              display: 'inline-flex', alignItems: 'center',
-              padding: '0.5rem 1.25rem',
-              borderRadius: '9999px',
-              background: 'oklch(62% 0.22 27)',
-              color: '#fff',
-              fontSize: '0.82rem',
-              fontWeight: 700,
-              letterSpacing: '0.01em',
-              whiteSpace: 'nowrap',
-            }}
             whileHover={{ background: 'oklch(55% 0.18 27)', scale: 1.03 }}
             transition={{ duration: 0.15 }}
           >
