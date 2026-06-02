@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   title: "MoonBlack Studios — Infraestructura de Ventas para Roofing",
   description: "Sistema de calificación y captura de contratos de roofing en piloto automático. Solo 5 contratistas por zona. Acceso exclusivo.",
   openGraph: {
+    url: "https://agente.moonblackstudios.com",
+    type: "website",
     title: "MoonBlack Studios — Infraestructura de Ventas para Roofing",
     description: "Sistema de calificación y captura de contratos de roofing en piloto automático. Solo 5 contratistas por zona. Acceso exclusivo.",
     images: [
